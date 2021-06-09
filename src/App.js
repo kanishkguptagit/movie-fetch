@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     fetchMoviesHandler();
-    setMovieAdded(false);
+    console.log('fetched');
   }, [fetchMoviesHandler, movieAdded]);
 
   async function addMovieHandler(movie) {
@@ -54,7 +54,9 @@ function App() {
     });
     const data = await response.json();
     console.log(data);
-    setMovieAdded(true);
+    setMovieAdded((prevState) => {
+      return 1-prevState;
+    });
   }
 
   let content = <p>Found no movies.</p>;
